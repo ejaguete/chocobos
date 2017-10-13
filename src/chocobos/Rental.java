@@ -4,7 +4,6 @@ public class Rental extends GenericObject {
 
 	private Chocobo _chocobo;
 	private int _days;
-	private int _cost;
 	
 	private final int MINDAYS = 1;
 	private final int MAXDAYS = 30;
@@ -28,38 +27,38 @@ public class Rental extends GenericObject {
 	}
 	
 	public int rentalCost() {
-		int amt = 0;
 		int stam = _chocobo.stats().get(ChocoboStats.ST);
-		int chocoType = _chocobo.stats().get(ChocoboStats.TYPE);
 		
-		switch(chocoType) {
+		if(_chocobo.stats().get(ChocoboStats.TYPE)==ChocoboStats.REGULAR) 
+			return regularChocoboCost(stam);
+		else 
+			return flyingChocoboCost(stam);
+	}
+	
+	private int regularChocoboCost(int stam) {
+		int amt = 800;
+		amt+=800;
+		if (_days>6)
+			amt += (_days-2) * 15;
+		else
+			amt += (_days) * 15;
+		
+		if (stam > 50)
+			amt += 2 * (stam-50);
+		
+		return amt;
+	}
+	
+	private int flyingChocoboCost(int stam) {
+		int amt=1000;
+		if(_days>6)
+			amt += (_days-3) * 20;
+		else
+			amt += _days * 20;
 
-		case ChocoboStats.REGULAR: 
-		{
-			amt+=800;
-			if (_days>6)
-				amt += (_days-2) * 15;
-			else
-				amt += (_days) * 15;
-
-			if (stam > 50)
-				amt += 2 * (stam-50);
-			break;
-		}
-
-		case ChocoboStats.FLYING:
-		{
-			amt+=1000;
-			if(_days>6)
-				amt += (_days-3) * 20;
-			else
-				amt += _days * 20;
-
-			if (stam > 50)
-				amt += 3 * (stam-50);
-			break;
-		}
-		}
+		if (stam > 50)
+			amt += 3 * (stam-50);
+		
 		return amt;
 	}
 	

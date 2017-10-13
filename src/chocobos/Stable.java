@@ -24,33 +24,22 @@ public class Stable extends GenericObject{
 		feed.clear();
 	}
 	
-	public StableFoodStores feed() {
-		return feed;
-	}
+	public StableFoodStores feed() { return feed; }
 
-	public int size() {
-		return stable.size();
-	}
+	public int size() { return stable.size(); }
 	
-	public boolean isEmpty() {
-		return stable.isEmpty();
-	}
+	public boolean isEmpty() { return stable.isEmpty(); }
 	
-	public void addChocobo(Chocobo choco) {
-		stable.put(choco.name(), choco);
-	}
+	public void addChocobo(Chocobo choco) { stable.put(choco.name(), choco); }
 
-	public Chocobo getChocobo(String name) {
-		return stable.get(name.toLowerCase());
-	}
+	public Chocobo getChocobo(String name) { return stable.get(name.toLowerCase()); }
 	
-	public Chocobo removeChocobo(String choco) {
-		return stable.remove(choco.toLowerCase());
-	}
+	public Chocobo removeChocobo(String choco) { return stable.remove(choco.toLowerCase()); }
 	
 	public void rename(String oldName, String newName) {
 		oldName = oldName.toLowerCase();
 		newName = newName.toLowerCase();
+		
 		Chocobo choco = removeChocobo(oldName);
 		choco.rename(newName);
 		stable.put(newName, choco);
@@ -59,10 +48,8 @@ public class Stable extends GenericObject{
 	public int feedChocobo(String name, int food) throws NoMoreFeedException {
 		name = name.toLowerCase();
 		Chocobo choco = getChocobo(name);
-		
-		int amt = feed().getFeedAmount(food);
 	
-		if (amt>0)
+		if (feed().hasFeed(food))
 			feed().updateFeed(food, -1);
 		else throw new NoMoreFeedException(food);
 		

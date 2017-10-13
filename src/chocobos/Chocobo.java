@@ -6,7 +6,7 @@ public class Chocobo extends GenericObject {
 		
 	/**
 	 * constructor
-	 * 
+	 * all other stats except stamina and type are set to 0
 	 * @param name
 	 * @param stamina
 	 * @param type : 0 = regular, 1 = flying
@@ -22,12 +22,8 @@ public class Chocobo extends GenericObject {
 		stats = new ChocoboStats(params);
 	}
 	
-	public void rename(String newName) {
-		_name = newName;
-	}
+	public void rename(String newName) { _name = newName; }
 	
-	public ChocoboStats stats() {
-		return stats;
-	}
+	public ChocoboStats stats() { return stats; }
 	
 }
