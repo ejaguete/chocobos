@@ -13,8 +13,11 @@ public class ChocoboStats {
 	public static final String DEF = "defense"; 
 	public static final String ATK = "attack";
 	
-	public ChocoboStats() {
-		
+	public ChocoboStats() {	
+		// initialize battle stats
+		stats.put("healing", 0);
+		stats.put("defense", 0);
+		stats.put("attack", 0);
 	}
 
 }
