@@ -32,11 +32,6 @@ public class Chocobo extends GenericObject {
 			setStat(TYPE, type);
 		else
 			throw new IllegalArgumentException("Kind value out of range [0,1]");
-		
-		// initialize battle stats
-		stats.put("healing", 0);
-		stats.put("defense", 0);
-		stats.put("attack", 0);
 	}
 	
 	public void rename(String newName) {
