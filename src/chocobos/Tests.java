@@ -135,8 +135,8 @@ public class Tests {
 	@Test
 	public void test_AddNewFeed() {
 		Stable stable = Stable.get();
-		stable.addFeed(Stable.CURIEL, 11);
-		assertEquals(11, stable.getFeedAmount(Stable.CURIEL));
+		stable.feed().updateFeed(StableFoodStores.CURIEL, 11);
+		assertEquals(11, stable.feed().getFeedAmount(StableFoodStores.CURIEL));
 		
 		stable.clear();
 	}
@@ -144,11 +144,11 @@ public class Tests {
 	@Test
 	public void test_AddExistingFeed() {
 		Stable stable = Stable.get();
-		stable.addFeed(Stable.CURIEL, 11);
-		assertEquals(11, stable.getFeedAmount(Stable.CURIEL));
+		stable.feed().updateFeed(StableFoodStores.CURIEL, 11);
+		assertEquals(11, stable.feed().getFeedAmount(StableFoodStores.CURIEL));
 		
-		stable.addFeed(Stable.CURIEL, 4);
-		assertEquals(15, stable.getFeedAmount(Stable.CURIEL));
+		stable.feed().updateFeed(StableFoodStores.CURIEL, 4);
+		assertEquals(15, stable.feed().getFeedAmount(StableFoodStores.CURIEL));
 		
 		stable.clear();
 	}
@@ -157,10 +157,10 @@ public class Tests {
 	public void test_StableFeedChocobo() throws NoMoreFeedException {
 		Stable stable = Stable.get();
 		stable.addChocobo(new Chocobo("Coco", 30, 0));
-		stable.addFeed(Stable.GHYSAHL, 10);
+		stable.feed().updateFeed(StableFoodStores.GHYSAHL, 10);
 		
-		stable.feed("coco", Stable.GHYSAHL);
-		assertEquals(9, stable.getFeedAmount(Stable.GHYSAHL));
+		stable.feedChocobo("coco", StableFoodStores.GHYSAHL);
+		assertEquals(9, stable.feed().getFeedAmount(StableFoodStores.GHYSAHL));
 		assertEquals(35, stable.getChocobo("coco").stats().get(ChocoboStats.ST));
 		
 		stable.clear();
@@ -170,12 +170,12 @@ public class Tests {
 	public void test_StableFeedChocoboTwice() throws NoMoreFeedException {
 		Stable stable = Stable.get();
 		stable.addChocobo(new Chocobo("Coco", 30, 0));
-		stable.addFeed(Stable.GHYSAHL, 10);
+		stable.feed().updateFeed(StableFoodStores.GHYSAHL, 10);
 		
-		stable.feed("coco", Stable.GHYSAHL);
-		stable.feed("coco", Stable.GHYSAHL);
+		stable.feedChocobo("coco", StableFoodStores.GHYSAHL);
+		stable.feedChocobo("coco", StableFoodStores.GHYSAHL);
 		
-		assertEquals(8, stable.getFeedAmount(Stable.GHYSAHL));
+		assertEquals(8, stable.feed().getFeedAmount(StableFoodStores.GHYSAHL));
 		assertEquals(40, stable.getChocobo("coco").stats().get(ChocoboStats.ST));
 		
 		stable.clear();
@@ -185,10 +185,10 @@ public class Tests {
 	public void test_StableNoMoreFeed() throws NoMoreFeedException {
 		Stable stable = Stable.get();
 		stable.addChocobo(new Chocobo("Coco", 30, 0));
-		stable.addFeed(Stable.GHYSAHL, 1);
+		stable.feed().updateFeed(StableFoodStores.GHYSAHL, 1);
 		
-		stable.feed("coco", Stable.GHYSAHL);
-		stable.feed("coco", Stable.GHYSAHL);
+		stable.feedChocobo("coco", StableFoodStores.GHYSAHL);
+		stable.feedChocobo("coco", StableFoodStores.GHYSAHL);
 		
 		stable.clear();
 	}
@@ -197,14 +197,14 @@ public class Tests {
 	public void test_StableFeedChocoboDifferentFeed() throws NoMoreFeedException {
 		Stable stable = Stable.get();
 		stable.addChocobo(new Chocobo("Coco", 30, 0));
-		stable.addFeed(Stable.GHYSAHL, 10);
-		stable.addFeed(Stable.CURIEL, 10);
+		stable.feed().updateFeed(StableFoodStores.GHYSAHL, 10);
+		stable.feed().updateFeed(StableFoodStores.CURIEL, 10);
 		
-		stable.feed("coco", Stable.GHYSAHL);
-		stable.feed("coco", Stable.CURIEL);
+		stable.feedChocobo("coco", StableFoodStores.GHYSAHL);
+		stable.feedChocobo("coco", StableFoodStores.CURIEL);
 		
-		assertEquals(9, stable.getFeedAmount(Stable.GHYSAHL));
-		assertEquals(9, stable.getFeedAmount(Stable.CURIEL));
+		assertEquals(9, stable.feed().getFeedAmount(StableFoodStores.GHYSAHL));
+		assertEquals(9, stable.feed().getFeedAmount(StableFoodStores.CURIEL));
 		assertEquals(35, stable.getChocobo("coco").stats().get(ChocoboStats.ST));
 		assertEquals(5, stable.getChocobo("coco").stats().get(ChocoboStats.HEAL));
 		

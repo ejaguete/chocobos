@@ -30,8 +30,7 @@ public class StableFoodStores {
 	 * @param feed : name of feed
 	 * @param amt : amount of feed to add
 	 */
-	public void addFeed(String type, int amt) {
-		type = type.toLowerCase();
+	public void updateFeed(int type, int amt) {
 		feed.put(type, feed.get(type)+amt);
 	}
 	
@@ -40,7 +39,7 @@ public class StableFoodStores {
 	 * @param type : feed of interest
 	 * @return amount of this feed
 	 */
-	public int getFeedAmount(String type) {
+	public int getFeedAmount(int type) {
 		return feed.get(type);
 	}
 	
@@ -49,7 +48,7 @@ public class StableFoodStores {
 	 * @param name : name of feed to check
 	 * @return true if stable has this feed, false otherwise
 	 */
-	public boolean hasFeed(String type) {
+	public boolean hasFeed(int type) {
 		return feed.get(type)>0;
 	}
 

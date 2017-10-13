@@ -8,7 +8,7 @@ public class Stable extends GenericObject{
 	private static Stable self;
 	
 	Map<String,Chocobo> stable = new HashMap<String,Chocobo>();
-	StableFoodStores feed = new StableFoodStores();
+	private StableFoodStores feed = new StableFoodStores();
 
 	
 	// singleton
@@ -27,6 +27,10 @@ public class Stable extends GenericObject{
 	 */
 	public void clear() {
 		stable.clear();
+	}
+	
+	public StableFoodStores feed() {
+		return feed;
 	}
 	
 	/**
@@ -87,27 +91,26 @@ public class Stable extends GenericObject{
 	}
 	
 	
-	public void feed(String name, String food) throws NoMoreFeedException {
+	public void feedChocobo(String name, int food) throws NoMoreFeedException {
 		name = name.toLowerCase();
-		food = food.toLowerCase();
 		Chocobo choco = getChocobo(name);
 		
-		int amt = feed.get(food);
+		int amt = feed().getFeedAmount(food);
 		if (amt>0)
-			feed.put(food, amt-1);
+			feed().updateFeed(food, -1);
 		else throw new NoMoreFeedException(food);
 		
 		switch(food) {
-			case GHYSAHL:
+			case StableFoodStores.GHYSAHL:
 				choco.stats().set(ChocoboStats.ST, choco.stats().get(ChocoboStats.ST)+5);
 				break;
-			case CURIEL:
+			case StableFoodStores.CURIEL:
 				choco.stats().set(ChocoboStats.HEAL, choco.stats().get(ChocoboStats.HEAL)+5);
 				break;
-			case REAGAN:
+			case StableFoodStores.REAGAN:
 				choco.stats().set(ChocoboStats.DEF, choco.stats().get(ChocoboStats.DEF)+5);
 				break;
-			case SYLKIS:
+			case StableFoodStores.SYLKIS:
 				choco.stats().set(ChocoboStats.ATK,  choco.stats().get(ChocoboStats.ATK)+5);
 				break;
 		}	
