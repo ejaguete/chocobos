@@ -21,6 +21,7 @@ public class Stable extends GenericObject{
 	
 	public void clear() {
 		stable.clear();
+		feed.clear();
 	}
 	
 	public StableFoodStores feed() {
@@ -55,11 +56,12 @@ public class Stable extends GenericObject{
 		stable.put(newName, choco);
 	}
 	
-	public void feedChocobo(String name, int food) throws NoMoreFeedException {
+	public int feedChocobo(String name, int food) throws NoMoreFeedException {
 		name = name.toLowerCase();
 		Chocobo choco = getChocobo(name);
 		
 		int amt = feed().getFeedAmount(food);
+	
 		if (amt>0)
 			feed().updateFeed(food, -1);
 		else throw new NoMoreFeedException(food);
@@ -77,6 +79,7 @@ public class Stable extends GenericObject{
 			case StableFoodStores.SYLKIS:
 				choco.stats().set(ChocoboStats.ATK,  choco.stats().get(ChocoboStats.ATK)+5);
 				break;
-		}	
+		}
+		return feed().updateFeed(food, 0);
 	}
 }

@@ -40,7 +40,7 @@ public class Player extends GenericObject {
 		if (rent.daysRented() > 6) points+=2;
 		
 		_points += points;
-		_cost = calculateCost();
+		_cost = rent.rentalCost();
 		
 		
 		res += "\t" + "Name: " + rent.chocobo().name() + "\n";
@@ -49,38 +49,4 @@ public class Player extends GenericObject {
 		return res; 
 	}
 
-	private int calculateCost() {
-		int amt = 0;
-		int stam = rent.chocobo().stats().get(ChocoboStats.ST);
-		
-		switch(rent.chocobo().stats().get(ChocoboStats.TYPE)) {
-
-		case ChocoboStats.REGULAR: 
-		{
-			amt+=800;
-			if (rent.daysRented() > 6)
-				amt += (rent.daysRented()-2) * 15;
-			else
-				amt += rent.daysRented() * 15;
-
-			if (stam > 50)
-				amt += 2 * (stam-50);
-			break;
-		}
-
-		case ChocoboStats.FLYING:
-		{
-			amt+=1000;
-			if(rent.daysRented() > 6)
-				amt += (rent.daysRented()-3) * 20;
-			else
-				amt += rent.daysRented() * 20;
-
-			if (stam > 50)
-				amt += 3 * (stam-50);
-			break;
-		}
-		}
-		return amt;
-	}
 }

@@ -25,10 +25,47 @@ public class Rental extends GenericObject {
 		return _days;
 	}
 	
+	public int rentalCost() {
+		int amt = 0;
+		int stam = _chocobo.stats().get(ChocoboStats.ST);
+		int chocoType = _chocobo.stats().get(ChocoboStats.TYPE);
+		
+		switch(chocoType) {
+
+		case ChocoboStats.REGULAR: 
+		{
+			amt+=800;
+			if (_days>6)
+				amt += (_days-2) * 15;
+			else
+				amt += (_days) * 15;
+
+			if (stam > 50)
+				amt += 2 * (stam-50);
+			break;
+		}
+
+		case ChocoboStats.FLYING:
+		{
+			amt+=1000;
+			if(_days>6)
+				amt += (_days-3) * 20;
+			else
+				amt += _days * 20;
+
+			if (stam > 50)
+				amt += 3 * (stam-50);
+			break;
+		}
+		}
+		return amt;
+	}
+	
 	public String toString() {
 		String res = _chocobo.name();
 		res += " daysRented=" + _days;
 		return res;
 	}
+	
 
 }

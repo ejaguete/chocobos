@@ -30,8 +30,8 @@ public class StableFoodStores {
 	 * @param feed : name of feed
 	 * @param amt : amount of feed to add
 	 */
-	public void updateFeed(int type, int amt) {
-		feed.put(type, feed.get(type)+amt);
+	public int updateFeed(int type, int amt) {
+		return feed.put(type, feed.get(type)+amt);
 	}
 	
 	/**
