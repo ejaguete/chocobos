@@ -16,13 +16,41 @@ public class StableFoodStores {
 	
 	public StableFoodStores() {
 		// initialize feed
-		for(int i=0;i<LEN;++i)
-			feed.put(i, 0);
+		clear();
 	}
 	
 	public void clear() {
 		for(int i=0;i<LEN;++i)
 			feed.put(i, 0);
+	}
+	
+	/**
+	 * addFeed()
+	 * add a type of feed to greens list
+	 * @param feed : name of feed
+	 * @param amt : amount of feed to add
+	 */
+	public void addFeed(String type, int amt) {
+		type = type.toLowerCase();
+		feed.put(type, feed.get(type)+amt);
+	}
+	
+	/**
+	 * getFeedAmount()
+	 * @param type : feed of interest
+	 * @return amount of this feed
+	 */
+	public int getFeedAmount(String type) {
+		return feed.get(type);
+	}
+	
+	/**
+	 * hasFeed()
+	 * @param name : name of feed to check
+	 * @return true if stable has this feed, false otherwise
+	 */
+	public boolean hasFeed(String type) {
+		return feed.get(type)>0;
 	}
 
 }

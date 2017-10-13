@@ -8,7 +8,7 @@ public class Stable extends GenericObject{
 	private static Stable self;
 	
 	Map<String,Chocobo> stable = new HashMap<String,Chocobo>();
-	StableFoodStores = new StableFoodStores();
+	StableFoodStores feed = new StableFoodStores();
 
 	
 	// singleton
@@ -86,34 +86,6 @@ public class Stable extends GenericObject{
 		stable.put(newName, choco);
 	}
 	
-	/**
-	 * addFeed()
-	 * add a type of feed to greens list
-	 * @param feed : name of feed
-	 * @param amt : amount of feed to add
-	 */
-	public void addFeed(String type, int amt) {
-		type = type.toLowerCase();
-		feed.put(type, feed.get(type)+amt);
-	}
-	
-	/**
-	 * getFeedAmount()
-	 * @param type : feed of interest
-	 * @return amount of this feed
-	 */
-	public int getFeedAmount(String type) {
-		return feed.get(type);
-	}
-	
-	/**
-	 * hasFeed()
-	 * @param name : name of feed to check
-	 * @return true if stable has this feed, false otherwise
-	 */
-	public boolean hasFeed(String type) {
-		return feed.get(type)>0;
-	}
 	
 	public void feed(String name, String food) throws NoMoreFeedException {
 		name = name.toLowerCase();
