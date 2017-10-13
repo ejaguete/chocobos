@@ -8,17 +8,11 @@ public class Stable extends GenericObject{
 	private static Stable self;
 	
 	Map<String,Chocobo> stable = new HashMap<String,Chocobo>();
+	StableFoodStores = new StableFoodStores();
 
 	
 	// singleton
-	private Stable() {
-		// initialize feed
-		feed.put(GHYSAHL, 0);
-		feed.put(CURIEL, 0);
-		feed.put(REAGAN, 0);
-		feed.put(SYLKIS, 0);
-		
-	}
+	private Stable() {	}
 	
 	public static Stable get() {
 		if (self==null)

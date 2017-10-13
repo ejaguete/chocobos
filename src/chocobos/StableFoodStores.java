@@ -11,7 +11,18 @@ public class StableFoodStores {
 	public static final int REAGAN = 2; 		// increases defense
 	public static final int SYLKIS = 3; 		// increases attack
 
+	private final int LEN = 4;
 	Map<Integer,Integer> feed = new HashMap<Integer,Integer>();
 	
+	public StableFoodStores() {
+		// initialize feed
+		for(int i=0;i<LEN;++i)
+			feed.put(i, 0);
+	}
+	
+	public void clear() {
+		for(int i=0;i<LEN;++i)
+			feed.put(i, 0);
+	}
 
 }
