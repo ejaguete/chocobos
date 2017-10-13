@@ -10,7 +10,25 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
  *
  */
 public class Tests {
+
+// ChocoboStats.java tests
 	
+	@Test
+	public void test_ChocoboStatsBlank() {
+		ChocoboStats s = new ChocoboStats();
+		
+		String expected = "[0, 0, 0, 0, 0, 0]";
+		assertEquals(expected, s.toString());
+	}
+	
+	@Test
+	public void test_ChocoboStatsParams() {
+		int[] params = {100, 0, 1, 0, 0, 0};
+		ChocoboStats s = new ChocoboStats(params);
+		
+		String expected = "[100, 0, 1, 0, 0, 0]";
+		assertEquals(expected, s.toString());
+	}
 // Chocobo.java tests
 
 	@Test

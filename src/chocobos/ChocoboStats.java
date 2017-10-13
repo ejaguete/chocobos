@@ -7,6 +7,8 @@ public class ChocoboStats {
 	//  stats
 	private Map<Integer,Integer> stats = new HashMap<Integer,Integer>();
 	
+	private final int LEN = 6;
+	
 	public static final int ST = 0; // ST > 50 increases price
 	public static final int TMP = 1; // TMP > 5 harder to manage, more likely to buck
 	public static final int TYPE = 2; 
@@ -20,15 +22,15 @@ public class ChocoboStats {
 	
 	public ChocoboStats() {	
 		// initialize battle stats
-		for (int i=0;i<stats.size();++i)
+		for (int i=0;i<LEN;++i)
 			set(i, 0);
 	}
 	
 	public ChocoboStats(int[] newStats) {
-		if(newStats.length!=stats.size())
-			throw new IllegalArgumentException("Wrong number of arguments, requires " + stats.size());
+		if(newStats.length!=LEN)
+			throw new IllegalArgumentException("Only " + newStats.length + " arguments, requires " + stats.size());
 		
-		for(int i=0;i<stats.size();++i) {
+		for(int i=0;i<LEN;++i) {
 			if(checkOK(i,newStats[i]))
 				set(i,newStats[i]);
 			else

@@ -18,7 +18,7 @@ public class Chocobo extends GenericObject {
 	 */
 	public Chocobo(String name, int stamina, int type) {
 		super(name);
-		int[] params = {stamina, new Random().nextInt(11), type, 0, 0, 0};
+		int[] params = {stamina, 0, type, 0, 0, 0};
 		stats = new ChocoboStats(params);
 	}
 	

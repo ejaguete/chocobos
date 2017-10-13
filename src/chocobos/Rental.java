@@ -6,14 +6,15 @@ public class Rental extends GenericObject {
 	private int _days;
 	private final int MINDAYS = 1;
 	private final int MAXDAYS = 30;
+	
 	public Rental(Chocobo choco, int daysRented) {
 		super();
 		_chocobo = choco;
-		if(daysRented>=MINDAYS && daysRented<=MAXDAYS) {
+		
+		if(daysRented>=MINDAYS && daysRented<=MAXDAYS)
 			_days = daysRented;
-		} else {
+		else
 			throw new IllegalArgumentException("Rent days value out of range: " + daysRented);
-		}
 	}
 	
 	public Chocobo chocobo() {

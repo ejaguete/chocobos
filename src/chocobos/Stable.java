@@ -110,7 +110,6 @@ public class Stable extends GenericObject{
 	 */
 	public void addFeed(String type, int amt) {
 		type = type.toLowerCase();
-		System.out.println(feed.get(type));
 		feed.put(type, feed.get(type)+amt);
 	}
 	
@@ -144,16 +143,16 @@ public class Stable extends GenericObject{
 		
 		switch(food) {
 			case GHYSAHL:
-				//choco.setStat(Chocobo.ST, choco.getStat(Chocobo.ST)+5);
+				choco.stats().set(ChocoboStats.ST, choco.stats().get(ChocoboStats.ST)+5);
 				break;
 			case CURIEL:
-				//choco.setStat(Chocobo.HEAL, choco.getStat(Chocobo.HEAL)+5);
+				choco.stats().set(ChocoboStats.HEAL, choco.stats().get(ChocoboStats.HEAL)+5);
 				break;
 			case REAGAN:
-				//choco.setStat(Chocobo.DEF, choco.getStat(Chocobo.DEF)+5);
+				choco.stats().set(ChocoboStats.DEF, choco.stats().get(ChocoboStats.DEF)+5);
 				break;
 			case SYLKIS:
-				//choco.setStat(Chocobo.ATK, choco.getStat(Chocobo.ATK)+5);
+				choco.stats().set(ChocoboStats.ATK,  choco.stats().get(ChocoboStats.ATK)+5);
 				break;
 		}	
 	}
