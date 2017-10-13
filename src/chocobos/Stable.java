@@ -27,10 +27,6 @@ public class Stable extends GenericObject{
 	 */
 	public void clear() {
 		stable.clear();
-		feed.put(GHYSAHL, 0);
-		feed.put(CURIEL, 0);
-		feed.put(REAGAN, 0);
-		feed.put(SYLKIS, 0);
 	}
 	
 	/**
