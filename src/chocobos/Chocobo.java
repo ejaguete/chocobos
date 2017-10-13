@@ -7,10 +7,6 @@ import java.util.Random;
 public class Chocobo extends GenericObject {
 	
 	private ChocoboStats stats = new ChocoboStats();
-	
-	// type code
-	public static final int REGULAR = 0;
-	public static final int FLYING = 1;
 		
 	/**
 	 * constructor

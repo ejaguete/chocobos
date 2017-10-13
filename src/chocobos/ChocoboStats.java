@@ -14,10 +14,14 @@ public class ChocoboStats {
 	public static final int DEF = 4; 
 	public static final int ATK = 5;
 	
+	// type code
+	public static final int REGULAR = 0;
+	public static final int FLYING = 1;
+	
 	public ChocoboStats() {	
 		// initialize battle stats
 		for (int i=0;i<stats.size();++i)
-			set(i, 0);
+			set(i, -1);
 	}
 	
 	public ChocoboStats(int[] newStats) {
@@ -25,9 +29,11 @@ public class ChocoboStats {
 			throw new IllegalArgumentException("Wrong number of arguments, requires " + stats.size());
 		
 		for(int i=0;i<stats.size();++i) {
-			set(i,newStats[i]);
+			if(checkOK(i,newStats[i]))
+				set(i,newStats[i]);
+			else
+				throw new IllegalArgumentException( i + "th element of array invalid: " + newStats[i]);
 		}
-		
 	}
 	
 	public int set(int stat, int value) {
@@ -37,6 +43,17 @@ public class ChocoboStats {
 	
 	public int get(int stat) {
 		return stats.get(stat);
+	}
+	
+	private boolean checkOK(int stat, int value) {
+		if(stat==ST)
+			return value<101;
+		else if(stat==TMP)
+			return value<11;
+		else if(stat==TYPE)
+			return value<2;
+		else
+			return true;
 	}
 
 }
