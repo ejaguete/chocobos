@@ -5,14 +5,8 @@ import java.util.Map;
 import java.util.Random;
 
 public class Chocobo extends GenericObject {
-	//  stats
-	private Map<String,Integer> stats = new HashMap<String,Integer>();
-	public static final String ST = "stamina"; // ST > 50 increases price
-	public static final String TMP = "temper"; // TMP > 5 harder to manage, more likely to buck
-	public static final String TYPE = "type"; 
-	public static final String HEAL = "healing";
-	public static final String DEF = "defense"; 
-	public static final String ATK = "attack";
+	
+	private ChocoboStats stats = new ChocoboStats();
 	
 	// type code
 	public static final int REGULAR = 0;
