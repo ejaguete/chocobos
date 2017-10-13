@@ -22,16 +22,6 @@ public class Chocobo extends GenericObject {
 	 */
 	public Chocobo(String name, int stamina, int type) {
 		super(name);
-		setStat(ST, stamina);
-		
-		// generate a random temper
-		stats.put(TMP, new Random().nextInt(11));
-		
-		// set kind of chocobo
-		if (type==0 || type ==1)
-			setStat(TYPE, type);
-		else
-			throw new IllegalArgumentException("Kind value out of range [0,1]");
 	}
 	
 	public void rename(String newName) {
