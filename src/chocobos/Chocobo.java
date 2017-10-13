@@ -13,12 +13,16 @@ public class Chocobo extends GenericObject {
 	 * 
 	 * @param name
 	 * @param stamina
-	 * @param temper
-	 * @param kind
+	 * @param type : 0 = regular, 1 = flying
 	 */
 	public Chocobo(String name, int stamina, int type) {
 		super(name);
 		int[] params = {stamina, 0, type, 0, 0, 0};
+		stats = new ChocoboStats(params);
+	}
+	
+	public Chocobo(String name, int[] params) {
+		super(name);
 		stats = new ChocoboStats(params);
 	}
 	

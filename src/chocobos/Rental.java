@@ -27,10 +27,6 @@ public class Rental extends GenericObject {
 		return _days;
 	}
 	
-	public int cost() {
-		return _cost;
-	}
-	
 	public int rentalCost() {
 		int amt = 0;
 		int stam = _chocobo.stats().get(ChocoboStats.ST);

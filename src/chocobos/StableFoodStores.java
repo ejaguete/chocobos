@@ -19,35 +19,29 @@ public class StableFoodStores {
 		clear();
 	}
 	
+	public StableFoodStores(int[] feeds) {
+		clear();
+		if(feeds.length!=LEN)
+			throw new IllegalArgumentException("Only " + feeds.length + " arguments, requires " + LEN);
+		
+		for(int i=0;i<LEN;++i) {
+			updateFeed(i,feeds[i]);
+		}
+	}
+	
 	public void clear() {
 		for(int i=0;i<LEN;++i)
 			feed.put(i, 0);
 	}
 	
-	/**
-	 * addFeed()
-	 * add a type of feed to greens list
-	 * @param feed : name of feed
-	 * @param amt : amount of feed to add
-	 */
 	public int updateFeed(int type, int amt) {
 		return feed.put(type, feed.get(type)+amt);
 	}
 	
-	/**
-	 * getFeedAmount()
-	 * @param type : feed of interest
-	 * @return amount of this feed
-	 */
 	public int getFeedAmount(int type) {
 		return feed.get(type);
 	}
 	
-	/**
-	 * hasFeed()
-	 * @param name : name of feed to check
-	 * @return true if stable has this feed, false otherwise
-	 */
 	public boolean hasFeed(int type) {
 		return feed.get(type)>0;
 	}

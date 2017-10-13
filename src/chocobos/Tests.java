@@ -48,6 +48,15 @@ public class Tests {
 		assertEquals(expected, coco.stats().toString());
 	}
 	
+	@Test
+	public void test_ChocoboCreationParams() {
+		int[] params =  {100, 0, 1, 0, 0, 0};
+		Chocobo coco = new Chocobo("coco", params);
+		
+		String expected = "[100, 0, 1, 0, 0, 0]";
+		assertEquals(expected, coco.stats().toString());
+	}
+	
 	@Test(expected=IllegalArgumentException.class)
 	public void test_IllegalChocoboKind() {
 		Chocobo coco = new Chocobo("Coco", 30, -1);
@@ -132,6 +141,25 @@ public class Tests {
 		stable.clear();
 	}
 	
+	
+	@Test
+	public void test_FoodStoresCreation() {
+		StableFoodStores f = new StableFoodStores();
+		
+		for(int i=0;i<4;++i)
+			assertTrue(!f.hasFeed(i));
+	}
+	
+	@Test
+	
+	public void test_FoodStoresParams() {
+		int[] params = {1,5,2,3};
+		StableFoodStores f = new StableFoodStores(params);
+		
+		for (int i=0;i<4;++i) {
+			assertEquals(params[i], f.getFeedAmount(i));
+		}
+	}
 	@Test
 	public void test_AddNewFeed() {
 		Stable stable = Stable.get();
@@ -221,7 +249,7 @@ public class Tests {
 		noctis.addRental(stable.getChocobo("Coco"), 1);
 		
 		noctis.statement();
-		assertEquals(815, noctis.rentCost());
+		assertEquals(815, noctis.rent().rentalCost());
 		assertEquals(1, noctis.points());
 		
 		stable.clear();
@@ -235,7 +263,7 @@ public class Tests {
 		noctis.addRental(stable.getChocobo("Coco"), 1);
 		
 		noctis.statement();
-		assertEquals(1020, noctis.rentCost());
+		assertEquals(1020, noctis.rent().rentalCost());
 		assertEquals(1, noctis.points());
 		
 		stable.clear();
@@ -249,7 +277,7 @@ public class Tests {
 		noctis.addRental(stable.getChocobo("Coco"), 7);
 		
 		noctis.statement();
-		assertEquals(875, noctis.rentCost());
+		assertEquals(875, noctis.rent().rentalCost());
 		assertEquals(3, noctis.points());
 		
 		stable.clear();
@@ -263,7 +291,7 @@ public class Tests {
 		noctis.addRental(stable.getChocobo("Coco"), 7);
 		
 		noctis.statement();
-		assertEquals(1080, noctis.rentCost());
+		assertEquals(1080, noctis.rent().rentalCost());
 		assertEquals(3, noctis.points());
 		
 		stable.clear();

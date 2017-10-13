@@ -26,9 +26,13 @@ public class ChocoboStats {
 			set(i, 0);
 	}
 	
+	/**
+	 * 
+	 * @param newStats : int[] containing [ST, TMP, TYPE, HEAL, DEF, ATK]
+	 */
 	public ChocoboStats(int[] newStats) {
 		if(newStats.length!=LEN)
-			throw new IllegalArgumentException("Only " + newStats.length + " arguments, requires " + stats.size());
+			throw new IllegalArgumentException("Only " + newStats.length + " arguments, requires " + LEN);
 		
 		for(int i=0;i<LEN;++i) {
 			if(checkOK(i,newStats[i]))
