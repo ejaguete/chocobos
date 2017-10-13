@@ -7,14 +7,7 @@ import java.util.HashMap;
 public class Stable extends GenericObject{
 	private static Stable self;
 	
-	// types of greens 
-	public static final String GHYSAHL = "ghysahl"; 	// increases stamina
-	public static final String CURIEL = "curiel"; 		// increases healing
-	public static final String REAGAN = "reagan"; 		// increases defense
-	public static final String SYLKIS = "sylkis"; 		// increases attack
-	
 	Map<String,Chocobo> stable = new HashMap<String,Chocobo>();
-	Map<String,Integer> feed = new HashMap<String,Integer>();
 
 	// singleton
 	private Stable() {
