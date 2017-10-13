@@ -4,7 +4,6 @@ public class Player extends GenericObject {
 	
 	private Rental rent;
 	private int _points = 0;
-	private int _cost = 0;
 
 	public Player (String name) {
 		super(name);
@@ -25,28 +24,22 @@ public class Player extends GenericObject {
 	public int points() {
 		return _points;
 	}
-	
-	public int rentCost() {
-		return _cost;
-	}
 
 	public String statement() {
-		int points = 0;
 		String res = "Rental Record for " + name() + "\n";
-
-		
-		
-		points++;
-		if (rent.daysRented() > 6) points+=2;
-		
-		_points += points;
-		_cost = rent.rentalCost();
-		
 		
 		res += "\t" + "Name: " + rent.chocobo().name() + "\n";
-		res += "\t" + "Cost: " + String.valueOf(_cost) + "\n";
-		res += "\t" + "You earned " + points + " renter points.";
+		res += "\t" + "Cost: " + String.valueOf(rent.rentalCost()) + "\n";
+		res += "\t" + "You earned " + rentPoints() + " renter points.";
 		return res; 
+	}
+	
+	public int rentPoints() {
+		int points = 0;
+		points++;
+		if (rent.daysRented() > 6) points+=2;
+		_points += points;
+		return points;
 	}
 
 }

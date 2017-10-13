@@ -4,6 +4,8 @@ public class Rental extends GenericObject {
 
 	private Chocobo _chocobo;
 	private int _days;
+	private int _cost;
+	
 	private final int MINDAYS = 1;
 	private final int MAXDAYS = 30;
 	
@@ -23,6 +25,10 @@ public class Rental extends GenericObject {
 	
 	public int daysRented() {
 		return _days;
+	}
+	
+	public int cost() {
+		return _cost;
 	}
 	
 	public int rentalCost() {
