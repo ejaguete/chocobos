@@ -24,26 +24,17 @@ public class StableFoodStores {
 		if(feeds.length!=LEN)
 			throw new IllegalArgumentException("Only " + feeds.length + " arguments, requires " + LEN);
 		
-		for(int i=0;i<LEN;++i) {
-			updateFeed(i,feeds[i]);
-		}
+		for(int i=0;i<LEN;++i) updateFeed(i,feeds[i]);
 	}
 	
 	public void clear() {
-		for(int i=0;i<LEN;++i)
-			feed.put(i, 0);
+		for(int i=0;i<LEN;++i)  feed.put(i, 0);
 	}
 	
-	public int updateFeed(int type, int amt) {
-		return feed.put(type, feed.get(type)+amt);
-	}
+	public int updateFeed(int type, int amt) { return feed.put(type, feed.get(type)+amt); }
 	
-	public int getFeedAmount(int type) {
-		return feed.get(type);
-	}
+	public int getFeedAmount(int type) { return feed.get(type);	}
 	
-	public boolean hasFeed(int type) {
-		return feed.get(type)>0;
-	}
+	public boolean hasFeed(int type) { return feed.get(type)>0; }
 
 }

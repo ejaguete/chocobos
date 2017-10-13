@@ -18,13 +18,9 @@ public class Rental extends GenericObject {
 			throw new IllegalArgumentException("Rent days value out of range: " + daysRented);
 	}
 	
-	public Chocobo chocobo() {
-		return _chocobo;
-	}
+	public Chocobo chocobo() { return _chocobo; }
 	
-	public int daysRented() {
-		return _days;
-	}
+	public int daysRented() { return _days; }
 	
 	public int rentalCost() {
 		int stam = _chocobo.stats().get(ChocoboStats.ST);
@@ -37,7 +33,6 @@ public class Rental extends GenericObject {
 	
 	private int regularChocoboCost(int stam) {
 		int amt = 800;
-		amt+=800;
 		if (_days>6)
 			amt += (_days-2) * 15;
 		else

@@ -27,7 +27,7 @@ public class ChocoboStats {
 	}
 	
 	/**
-	 * 
+	 * constructor
 	 * @param newStats : int[] containing [ST, TMP, TYPE, HEAL, DEF, ATK]
 	 */
 	public ChocoboStats(int[] newStats) {
@@ -38,7 +38,7 @@ public class ChocoboStats {
 			if(checkOK(i,newStats[i]))
 				set(i,newStats[i]);
 			else
-				throw new IllegalArgumentException( i + "th element of array invalid: " + newStats[i]);
+				throw new IllegalArgumentException( "Element " + i + " of array invalid: " + newStats[i]);
 		}
 	}
 	
@@ -53,11 +53,11 @@ public class ChocoboStats {
 	
 	private boolean checkOK(int stat, int value) {
 		if(stat==ST)
-			return value<101;
+			return value<101 && value>-1;
 		else if(stat==TMP)
-			return value<11;
+			return value<11 && value>-1;
 		else if(stat==TYPE)
-			return value<2;
+			return value<2 && value>-1;
 		else
 			return true;
 	}

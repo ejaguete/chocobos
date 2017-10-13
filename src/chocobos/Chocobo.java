@@ -17,6 +17,11 @@ public class Chocobo extends GenericObject {
 		stats = new ChocoboStats(params);
 	}
 	
+	/**
+	 * constructor
+	 * @param name
+	 * @param newStats : int[] containing [ST, TMP, TYPE, HEAL, DEF, ATK]
+	 */
 	public Chocobo(String name, int[] params) {
 		super(name);
 		stats = new ChocoboStats(params);

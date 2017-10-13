@@ -35,8 +35,7 @@ public class Player extends GenericObject {
 	}
 	
 	public int rentPoints() {
-		int points = 0;
-		points++;
+		int points = 1;
 		if (rent.daysRented() > 6) points+=2;
 		_points += points;
 		return points;

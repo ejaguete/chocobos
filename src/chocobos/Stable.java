@@ -14,8 +14,7 @@ public class Stable extends GenericObject{
 	private Stable() {	}
 	
 	public static Stable get() {
-		if (self==null)
-			self = new Stable();
+		if (self==null) self = new Stable();
 		return self;
 	}
 	
@@ -49,8 +48,7 @@ public class Stable extends GenericObject{
 		name = name.toLowerCase();
 		Chocobo choco = getChocobo(name);
 	
-		if (feed().hasFeed(food))
-			feed().updateFeed(food, -1);
+		if (feed().hasFeed(food)) feed().updateFeed(food, -1);
 		else throw new NoMoreFeedException(food);
 		
 		updateChocoboStats(choco, food);
