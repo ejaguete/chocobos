@@ -66,20 +66,25 @@ public class Stable extends GenericObject{
 			feed().updateFeed(food, -1);
 		else throw new NoMoreFeedException(food);
 		
-		switch(food) {
-			case StableFoodStores.GHYSAHL:
-				choco.stats().set(ChocoboStats.ST, choco.stats().get(ChocoboStats.ST)+5);
-				break;
-			case StableFoodStores.CURIEL:
-				choco.stats().set(ChocoboStats.HEAL, choco.stats().get(ChocoboStats.HEAL)+5);
-				break;
-			case StableFoodStores.REAGAN:
-				choco.stats().set(ChocoboStats.DEF, choco.stats().get(ChocoboStats.DEF)+5);
-				break;
-			case StableFoodStores.SYLKIS:
-				choco.stats().set(ChocoboStats.ATK,  choco.stats().get(ChocoboStats.ATK)+5);
-				break;
-		}
+		updateChocoboStats(choco, food);
+
 		return feed().updateFeed(food, 0);
+	}
+	
+	private void updateChocoboStats(Chocobo choco, int food) {
+		switch(food) {
+		case StableFoodStores.GHYSAHL:
+			choco.stats().set(ChocoboStats.ST, choco.stats().get(ChocoboStats.ST)+5);
+			break;
+		case StableFoodStores.CURIEL:
+			choco.stats().set(ChocoboStats.HEAL, choco.stats().get(ChocoboStats.HEAL)+5);
+			break;
+		case StableFoodStores.REAGAN:
+			choco.stats().set(ChocoboStats.DEF, choco.stats().get(ChocoboStats.DEF)+5);
+			break;
+		case StableFoodStores.SYLKIS:
+			choco.stats().set(ChocoboStats.ATK,  choco.stats().get(ChocoboStats.ATK)+5);
+			break;
+		}
 	}
 }
