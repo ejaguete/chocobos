@@ -21,7 +21,7 @@ public class ChocoboStats {
 	public ChocoboStats() {	
 		// initialize battle stats
 		for (int i=0;i<stats.size();++i)
-			set(i, -1);
+			set(i, 0);
 	}
 	
 	public ChocoboStats(int[] newStats) {
@@ -54,6 +54,14 @@ public class ChocoboStats {
 			return value<2;
 		else
 			return true;
+	}
+	
+	public String toString() {
+		String s = "[";
+		for(int i=0;i<stats.size()-1;++i)
+			s+= stats.get(i) + ", ";
+		s += stats.get(stats.size()-1) + "]";
+		return s;
 	}
 
 }

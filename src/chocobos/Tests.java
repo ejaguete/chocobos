@@ -17,8 +17,10 @@ public class Tests {
 	public void test_ChocoboCreation() {
 		Chocobo coco = new Chocobo("Coco", 50, 0);
 		assertEquals("coco", coco.name());
-		assertEquals(50,coco.getStat(Chocobo.ST));
-		assertEquals(0,coco.getStat(Chocobo.TYPE));
+		
+		String expected = "[50, 0, 0, 0, 0, 0]";
+		
+		assertEquals(expected, coco.stats().toString());
 	}
 	
 	@Test(expected=IllegalArgumentException.class)
@@ -134,7 +136,7 @@ public class Tests {
 		
 		stable.feed("coco", Stable.GHYSAHL);
 		assertEquals(9, stable.getFeedAmount(Stable.GHYSAHL));
-		assertEquals(35, stable.getChocobo("coco").getStat(Chocobo.ST));
+		assertEquals(35, stable.getChocobo("coco").stats().get(ChocoboStats.ST));
 		
 		stable.clear();
 	}
@@ -149,7 +151,7 @@ public class Tests {
 		stable.feed("coco", Stable.GHYSAHL);
 		
 		assertEquals(8, stable.getFeedAmount(Stable.GHYSAHL));
-		assertEquals(40, stable.getChocobo("coco").getStat(Chocobo.ST));
+		assertEquals(40, stable.getChocobo("coco").stats().get(ChocoboStats.ST));
 		
 		stable.clear();
 	}
@@ -178,8 +180,8 @@ public class Tests {
 		
 		assertEquals(9, stable.getFeedAmount(Stable.GHYSAHL));
 		assertEquals(9, stable.getFeedAmount(Stable.CURIEL));
-		assertEquals(35, stable.getChocobo("coco").getStat(Chocobo.ST));
-		assertEquals(5, stable.getChocobo("coco").getStat(Chocobo.HEAL));
+		assertEquals(35, stable.getChocobo("coco").stats().get(ChocoboStats.ST));
+		assertEquals(5, stable.getChocobo("coco").stats().get(ChocoboStats.HEAL));
 		
 		stable.clear();
 	}
