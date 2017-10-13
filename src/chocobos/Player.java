@@ -31,50 +31,56 @@ public class Player extends GenericObject {
 	}
 
 	public String statement() {
-		int amt = 0;
 		int points = 0;
 		String res = "Rental Record for " + name() + "\n";
-		
-		int stam = rent.chocobo().stats().get(ChocoboStats.ST);
 
-		switch(rent.chocobo().stats().get(ChocoboStats.TYPE)) {
-
-			case ChocoboStats.REGULAR: {
-				amt+=800;
-				if (rent.daysRented() > 6)
-					amt += (rent.daysRented()-2) * 15;
-				else
-					amt += rent.daysRented() * 15;
 		
-				if (stam > 50)
-					amt += 2 * (stam-50);
-				break;
-			}
-	
-			case ChocoboStats.FLYING: {
-				amt+=1000;
-				if(rent.daysRented() > 6)
-					amt += (rent.daysRented()-3) * 20;
-				else
-					amt += rent.daysRented() * 20;
-	
-				if (stam > 50)
-					amt += 3 * (stam-50);
-				break;
-			}
-		}
 		
 		points++;
 		if (rent.daysRented() > 6) points+=2;
 		
 		_points += points;
-		_cost = amt;
+		_cost = calculateCost();
 		
 		
 		res += "\t" + "Name: " + rent.chocobo().name() + "\n";
-		res += "\t" + "Cost: " + String.valueOf(amt) + "\n";
+		res += "\t" + "Cost: " + String.valueOf(_cost) + "\n";
 		res += "\t" + "You earned " + points + " renter points.";
 		return res; 
 	}
 
+	private int calculateCost() {
+		int amt = 0;
+		int stam = rent.chocobo().stats().get(ChocoboStats.ST);
+		
+		switch(rent.chocobo().stats().get(ChocoboStats.TYPE)) {
+
+		case ChocoboStats.REGULAR: 
+		{
+			amt+=800;
+			if (rent.daysRented() > 6)
+				amt += (rent.daysRented()-2) * 15;
+			else
+				amt += rent.daysRented() * 15;
+
+			if (stam > 50)
+				amt += 2 * (stam-50);
+			break;
+		}
+
+		case ChocoboStats.FLYING:
+		{
+			amt+=1000;
+			if(rent.daysRented() > 6)
+				amt += (rent.daysRented()-3) * 20;
+			else
+				amt += rent.daysRented() * 20;
+
+			if (stam > 50)
+				amt += 3 * (stam-50);
+			break;
+		}
+		}
+		return amt;
+	}
 }
