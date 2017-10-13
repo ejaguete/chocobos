@@ -38,12 +38,4 @@ public class Chocobo extends GenericObject {
 		_name = newName;
 	}
 	
-	public int getStat(String stat) {
-		return stats.get(stat.toLowerCase());
-	}
-	
-	public void setStat(String stat, int value) {
-		stats.put(stat, value);
-	}
-	
 }
