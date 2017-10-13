@@ -9,6 +9,7 @@ public class Stable extends GenericObject{
 	
 	Map<String,Chocobo> stable = new HashMap<String,Chocobo>();
 
+	
 	// singleton
 	private Stable() {
 		// initialize feed

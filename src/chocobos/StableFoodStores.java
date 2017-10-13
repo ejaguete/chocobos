@@ -12,5 +12,6 @@ public class StableFoodStores {
 	public static final int SYLKIS = 3; 		// increases attack
 
 	Map<Integer,Integer> feed = new HashMap<Integer,Integer>();
+	
 
 }
