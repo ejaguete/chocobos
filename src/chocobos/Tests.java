@@ -29,6 +29,13 @@ public class Tests {
 		String expected = "[100, 0, 1, 0, 0, 0]";
 		assertEquals(expected, s.toString());
 	}
+	
+	@Test(expected=IllegalArgumentException.class)
+	public void test_ChocoboStatsIllegalParams() {
+		int[] params = {1};
+		ChocoboStats s = new ChocoboStats(params);
+	}
+	
 // Chocobo.java tests
 
 	@Test
